@@ -83,6 +83,7 @@ export function ProgramsSection() {
                     alt={`${program.title} - ${program.description.substring(0, 60)}`}
                     fill
                     loading="lazy"
+                    unoptimized
                     quality={85}
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, 50vw"

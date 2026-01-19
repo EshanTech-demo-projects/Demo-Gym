@@ -126,6 +126,7 @@ export function TestimonialsSection() {
                           alt={`${testimonial.name} - ${testimonial.role} testimonial photo`}
                           fill
                           loading="lazy"
+                          unoptimized
                           quality={85}
                           className="object-cover"
                           sizes="56px"

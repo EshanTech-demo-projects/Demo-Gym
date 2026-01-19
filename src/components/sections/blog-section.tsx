@@ -79,6 +79,7 @@ export function BlogSection() {
                     alt={`${post.title} - ${post.category} article by ${post.author}`}
                     fill
                     loading="lazy"
+                    unoptimized
                     quality={85}
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

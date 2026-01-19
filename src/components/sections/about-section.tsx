@@ -38,6 +38,7 @@ export function AboutSection() {
                 alt="Professional gym facility with modern equipment and training area"
                 fill
                 priority
+                unoptimized
                 quality={85}
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -54,6 +55,7 @@ export function AboutSection() {
                 alt="Personal trainer helping client with workout technique"
                 fill
                 loading="lazy"
+                unoptimized
                 quality={85}
                 className="object-cover"
                 sizes="(max-width: 640px) 160px, (max-width: 768px) 208px, 256px"
