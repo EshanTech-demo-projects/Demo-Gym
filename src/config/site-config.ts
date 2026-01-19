@@ -7,10 +7,10 @@ export const siteConfig: SiteConfig = {
   theme: 'layout-1-stacked', // Change to: 'layout-1-stacked' | 'layout-2-split' | 'layout-3-grid' | 'layout-4-diagonal'
   logo: '/images/logo.png',
   contact: {
-    phone: '+1 (555) 123-4567',
-    email: 'info@powerfitgym.com',
+    phone: '+91 9959355356',
+    email: 'eshantechservices@gmail.com',
     address: '123 Fitness Street, New York, NY 10001',
-    whatsapp: '+15551234567',
+    whatsapp: '+919959355356',
   },
   social: {
     facebook: 'https://facebook.com/powerfitgym',
