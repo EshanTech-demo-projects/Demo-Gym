@@ -3,7 +3,7 @@ import { SiteConfig } from './themes';
 // This is your main site configuration - customize for each website
 export const siteConfig: SiteConfig = {
   name: 'PowerFit Gym',
-  description: 'Transform your body, transform your life. Join the ultimate fitness experience.',
+  description: 'Transform your body and elevate your life at PowerFit Gym. Join thousands achieving their fitness goals with world-class trainers, cutting-edge equipment, and a supportive community.',
   theme: 'layout-1-stacked', // Change to: 'layout-1-stacked' | 'layout-2-split' | 'layout-3-grid' | 'layout-4-diagonal'
   logo: '/images/logo.png',
   contact: {
@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
     enableTestimonials: true,
     enableMap: true,
     enableVideo: true,
-    enableBackgroundVideo: true,
+    enableBackgroundVideo: false, // Disabled for better mobile performance
   },
 };
 

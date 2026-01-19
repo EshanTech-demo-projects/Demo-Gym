@@ -66,25 +66,25 @@ export function PricingSection() {
       <div className="container-custom">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-primary font-semibold text-xs md:text-sm uppercase tracking-wider">
             Pricing Plans
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 md:mb-6 px-4">
             Choose Your <span className="gradient-text">Perfect Plan</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Flexible membership options designed to fit your lifestyle and budget.
             No hidden fees, cancel anytime.
           </p>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto px-4">
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}
@@ -94,37 +94,37 @@ export function PricingSection() {
               className="relative"
             >
               {plan.popular && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
-                  <span className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                  <span className="bg-gradient-to-r from-primary to-secondary text-white px-4 py-1.5 md:px-6 md:py-2 rounded-full text-xs md:text-sm font-semibold shadow-lg">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <Card className={`h-full ${plan.popular ? 'border-2 border-primary shadow-2xl scale-105' : ''}`}>
-                <CardHeader className="text-center pb-8">
+              <Card className={`h-full ${plan.popular ? 'border-2 border-primary shadow-2xl md:scale-105' : ''}`}>
+                <CardHeader className="text-center pb-6 md:pb-8">
                   {/* Icon */}
                   <motion.div
-                    className={`h-20 w-20 rounded-2xl bg-gradient-to-br ${plan.color} flex items-center justify-center mx-auto mb-6`}
+                    className={`h-16 w-16 md:h-20 md:w-20 rounded-xl md:rounded-2xl bg-gradient-to-br ${plan.color} flex items-center justify-center mx-auto mb-4 md:mb-6`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <Icon icon="mdi:dumbbell" className="h-10 w-10 text-white" />
+                    <Icon icon="mdi:dumbbell" className="h-8 w-8 md:h-10 md:w-10 text-white" />
                   </motion.div>
 
-                  <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
-                  <p className="text-sm text-muted-foreground mb-6">{plan.description}</p>
+                  <CardTitle className="text-xl md:text-2xl mb-2">{plan.name}</CardTitle>
+                  <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6">{plan.description}</p>
 
                   {/* Price */}
                   <div>
-                    <span className="text-5xl font-bold gradient-text">{plan.price}</span>
-                    <span className="text-muted-foreground">/{plan.period}</span>
+                    <span className="text-4xl md:text-5xl font-bold gradient-text">{plan.price}</span>
+                    <span className="text-sm md:text-base text-muted-foreground">/{plan.period}</span>
                   </div>
                 </CardHeader>
 
                 <CardContent>
                   {/* Features */}
-                  <ul className="space-y-4 mb-8">
+                  <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                     {plan.features.map((feature, featureIndex) => (
                       <motion.li
                         key={featureIndex}
@@ -135,11 +135,11 @@ export function PricingSection() {
                       >
                         <Icon
                           icon={feature.included ? 'mdi:check-circle' : 'mdi:close-circle'}
-                          className={`h-6 w-6 flex-shrink-0 ${
+                          className={`h-5 w-5 md:h-6 md:w-6 flex-shrink-0 mt-0.5 ${
                             feature.included ? 'text-green-500' : 'text-muted-foreground/30'
                           }`}
                         />
-                        <span className={feature.included ? '' : 'text-muted-foreground line-through'}>
+                        <span className={`text-sm md:text-base ${feature.included ? '' : 'text-muted-foreground line-through'}`}>
                           {feature.text}
                         </span>
                       </motion.li>
@@ -150,10 +150,10 @@ export function PricingSection() {
                   <Button
                     variant={plan.popular ? 'gradient' : 'outline'}
                     size="lg"
-                    className="w-full"
+                    className="w-full text-sm md:text-base h-11 md:h-12"
                   >
-                    {plan.popular ? 'Get Started' : 'Choose Plan'}
-                    <Icon icon="mdi:arrow-right" className="h-5 w-5" />
+                    {plan.popular ? 'Get Started Now' : 'Choose Plan'}
+                    <Icon icon="mdi:arrow-right" className="h-4 w-4 md:h-5 md:w-5 ml-2" />
                   </Button>
                 </CardContent>
               </Card>
@@ -163,23 +163,23 @@ export function PricingSection() {
 
         {/* Additional Info */}
         <motion.div
-          className="text-center mt-12"
+          className="text-center mt-8 md:mt-12 px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
         >
-          <p className="text-muted-foreground mb-4">
-            Need a custom plan? <a href="#contact" className="text-primary hover:underline font-semibold">Contact us</a>
+          <p className="text-sm md:text-base text-muted-foreground mb-4">
+            Need a custom plan? <a href="#contact" className="text-primary hover:underline font-semibold">Contact us</a> for personalized options
           </p>
-          <div className="flex flex-wrap justify-center gap-8 mt-8">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-6 md:mt-8">
             {[
               { icon: 'mdi:shield-check', text: 'Money Back Guarantee' },
               { icon: 'mdi:credit-card-outline', text: 'Flexible Payments' },
               { icon: 'mdi:account-cancel', text: 'Cancel Anytime' },
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-2">
-                <Icon icon={item.icon} className="h-6 w-6 text-primary" />
-                <span className="text-sm font-medium">{item.text}</span>
+                <Icon icon={item.icon} className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                <span className="text-xs md:text-sm font-medium">{item.text}</span>
               </div>
             ))}
           </div>

@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    optimizePackageImports: ['@iconify/react', 'framer-motion'],
+  },
   images: {
     remotePatterns: [
       {
@@ -22,9 +25,6 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
-  },
-  experimental: {
-    optimizePackageImports: ['@iconify/react', 'framer-motion'],
   },
   async headers() {
     return [

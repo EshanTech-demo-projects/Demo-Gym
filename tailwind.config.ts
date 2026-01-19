@@ -49,6 +49,17 @@ const config: Config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      screens: {
+        'xs': '475px',
+        '3xl': '1920px',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '100': '25rem',
+        '112': '28rem',
+        '128': '32rem',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -78,6 +89,14 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateX(50px)" },
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
+        "bounce-slow": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -87,6 +106,8 @@ const config: Config = {
         "scale-in": "scale-in 0.5s ease-out",
         "slide-in-left": "slide-in-left 0.6s ease-out",
         "slide-in-right": "slide-in-right 0.6s ease-out",
+        "bounce-slow": "bounce-slow 3s ease-in-out infinite",
+        "pulse-slow": "pulse-slow 3s ease-in-out infinite",
       },
     },
   },

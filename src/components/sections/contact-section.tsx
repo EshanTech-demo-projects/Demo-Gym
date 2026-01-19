@@ -31,59 +31,59 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section-padding" ref={ref}>
+    <section id="contact" className="section-padding bg-muted/30" ref={ref}>
       <div className="container-custom">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-primary font-semibold text-xs md:text-sm uppercase tracking-wider">
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4 md:mb-6 px-4">
             Start Your <span className="gradient-text">Fitness Journey</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Have questions? We&apos;re here to help. Reach out and let&apos;s make your fitness goals a reality.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-6 md:space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Contact Information</h3>
 
               {/* Contact Cards */}
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 <Card className="border-2 hover:border-primary transition-colors">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon icon="mdi:map-marker" className="h-7 w-7 text-primary" />
+                  <CardContent className="p-4 md:p-6 flex items-center gap-3 md:gap-4">
+                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Icon icon="mdi:map-marker" className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                     </div>
                     <div>
-                      <p className="font-semibold mb-1">Address</p>
-                      <p className="text-muted-foreground">{siteConfig.contact.address}</p>
+                      <p className="font-semibold mb-1 text-sm md:text-base">Address</p>
+                      <p className="text-muted-foreground text-xs md:text-base">{siteConfig.contact.address}</p>
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card className="border-2 hover:border-primary transition-colors">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon icon="mdi:phone" className="h-7 w-7 text-primary" />
+                  <CardContent className="p-4 md:p-6 flex items-center gap-3 md:gap-4">
+                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Icon icon="mdi:phone" className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                     </div>
                     <div>
-                      <p className="font-semibold mb-1">Phone</p>
-                      <a href={`tel:${siteConfig.contact.phone}`} className="text-muted-foreground hover:text-primary transition-colors">
+                      <p className="font-semibold mb-1 text-sm md:text-base">Phone</p>
+                      <a href={`tel:${siteConfig.contact.phone}`} className="text-muted-foreground hover:text-primary transition-colors text-sm md:text-base">
                         {siteConfig.contact.phone}
                       </a>
                     </div>
@@ -91,13 +91,13 @@ export function ContactSection() {
                 </Card>
 
                 <Card className="border-2 hover:border-primary transition-colors">
-                  <CardContent className="p-6 flex items-center gap-4">
-                    <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Icon icon="mdi:email" className="h-7 w-7 text-primary" />
+                  <CardContent className="p-4 md:p-6 flex items-center gap-3 md:gap-4">
+                    <div className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Icon icon="mdi:email" className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                     </div>
-                    <div>
-                      <p className="font-semibold mb-1">Email</p>
-                      <a href={`mailto:${siteConfig.contact.email}`} className="text-muted-foreground hover:text-primary transition-colors">
+                    <div className="overflow-hidden">
+                      <p className="font-semibold mb-1 text-sm md:text-base">Email</p>
+                      <a href={`mailto:${siteConfig.contact.email}`} className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-base break-all">
                         {siteConfig.contact.email}
                       </a>
                     </div>
