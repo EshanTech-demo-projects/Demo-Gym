@@ -264,8 +264,8 @@ export function ContactSection() {
                     className="embed-map-frame" 
                     frameBorder="0" 
                     scrolling="no" 
-                    marginHeight="0" 
-                    marginWidth="0" 
+                    marginHeight={0} 
+                    marginWidth={0} 
                     src="https://maps.google.com/maps?width=600&height=400&hl=en&q=beeramguda%20shiva&t=&z=15&ie=UTF8&iwloc=B&output=embed"
                     title="Gym Location Map"
                   />
