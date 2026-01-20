@@ -3,6 +3,10 @@ import { Inter, Montserrat, Playfair_Display, Rajdhani, Poppins } from 'next/fon
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { siteConfig } from '@/config/site-config';
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
+import { ScrollToTop } from '@/components/ui/scroll-to-top';
+import { FloatingActions } from '@/components/ui/floating-actions';
 import Script from 'next/script';
 
 const inter = Inter({ 
@@ -187,7 +191,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           {children}
+          <Footer />
+          <ScrollToTop />
+          <FloatingActions />
         </ThemeProvider>
       </body>
     </html>

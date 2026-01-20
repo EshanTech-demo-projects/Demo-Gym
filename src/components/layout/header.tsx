@@ -9,15 +9,14 @@ import { siteConfig } from '@/config/site-config';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Programs', href: '#programs' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Trainers', href: '#trainers' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Programs', href: '/programs' },
+  { label: 'Trainers', href: '/trainers' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export function Header() {
@@ -33,11 +32,17 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // For home page, scroll to sections if on home page
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsMobileMenuOpen(false);
+      }
+    } else {
+      // For other pages, let Next.js handle routing
       setIsMobileMenuOpen(false);
     }
   };
@@ -63,6 +68,11 @@ export function Header() {
         role="banner"
       >
       <nav className="container-custom px-3 sm:px-4 md:px-6 relative" aria-label="Main navigation">
+        {/* Tagline Banner */}
+        <div className="absolute -top-8 left-0 right-0 bg-primary/95 backdrop-blur-sm py-1.5 text-center hidden md:block">
+          <p className="text-white text-xs font-medium tracking-wide">🔥 Your Transformation Starts Here - Join 5000+ Members Today!</p>
+        </div>
+        
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1.5 sm:gap-2 group flex-shrink-0" aria-label={`${siteConfig.name} home`}>
@@ -75,15 +85,14 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
                 className="text-sm font-medium hover:text-primary transition-colors relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -92,17 +101,15 @@ export function Header() {
             <div className="hidden sm:block">
               <ThemeToggle />
             </div>
-            <Button 
-              variant="gradient" 
-              size="lg" 
-              className="hidden md:inline-flex"
-              onClick={() => {
-                const element = document.querySelector('#contact');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Join Now
-            </Button>
+            <Link href="/contact">
+              <Button 
+                variant="gradient" 
+                size="lg" 
+                className="hidden md:inline-flex"
+              >
+                Join Now
+              </Button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <Button
@@ -127,33 +134,31 @@ export function Header() {
         {isMobileMenuOpen && (
           <div 
             id="mobile-menu" 
-            className="lg:hidden absolute top-full left-0 right-0 py-4 border-t border-border bg-background/98 backdrop-blur-md shadow-xl animate-fade-in"
+            className="lg:hidden absolute top-full left-0 right-0 py-4 border-t border-border bg-background backdrop-blur-xl shadow-2xl animate-fade-in"
           >
             <div className="container-custom px-4">
               <div className="flex flex-col gap-1" role="menu">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="text-base font-medium hover:text-primary hover:bg-primary/5 transition-all py-3 px-4 rounded-lg"
                   role="menuitem"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <Button 
-                variant="gradient" 
-                size="lg" 
-                className="w-full mt-4"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  const element = document.querySelector('#contact');
-                  element?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Join Now - Get Started Today
-              </Button>
+              <Link href="/contact" className="w-full">
+                <Button 
+                  variant="gradient" 
+                  size="lg" 
+                  className="w-full mt-4"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Join Now - Get Started Today
+                </Button>
+              </Link>
               </div>
             </div>
           </div>

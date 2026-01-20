@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
+import Link from 'next/link';
 import { media } from '@/config/media';
 
 const blogPosts = [
@@ -134,10 +135,12 @@ export function BlogSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5 }}
         >
-          <Button variant="outline" size="lg">
-            View All Articles
-            <Icon icon="mdi:arrow-right" className="h-5 w-5" />
-          </Button>
+          <Link href="/blog">
+            <Button variant="outline" size="lg">
+              View All Articles
+              <Icon icon="mdi:arrow-right" className="h-5 w-5 ml-2" />
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

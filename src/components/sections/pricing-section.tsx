@@ -1,10 +1,12 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Icon } from '@iconify/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { BookingModal } from '@/components/ui/booking-modal';
+import Link from 'next/link';
 
 const pricingPlans = [
   {
@@ -60,6 +62,13 @@ const pricingPlans = [
 export function PricingSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string>('');
+
+  const handleSelectPlan = (planName: string) => {
+    setSelectedPlan(planName);
+    setIsBookingModalOpen(true);
+  };
 
   return (
     <section id="pricing" className="section-padding bg-muted/30" ref={ref}>
@@ -101,7 +110,7 @@ export function PricingSection() {
                 </div>
               )}
 
-              <Card className={`h-full ${plan.popular ? 'border-2 border-primary shadow-2xl md:scale-105' : ''}`}>
+              <Card className={`h-full transition-all duration-300 hover:shadow-2xl ${plan.popular ? 'border-2 border-primary shadow-2xl md:scale-105 hover:scale-110' : 'hover:scale-105 hover:border-primary/50'}`}>
                 <CardHeader className="text-center pb-6 md:pb-8">
                   {/* Icon */}
                   <motion.div
@@ -150,7 +159,8 @@ export function PricingSection() {
                   <Button
                     variant={plan.popular ? 'gradient' : 'outline'}
                     size="lg"
-                    className="w-full text-sm md:text-base h-11 md:h-12"
+                    className="w-full text-sm md:text-base h-11 md:h-12 transition-all duration-300 hover:scale-105"
+                    onClick={() => handleSelectPlan(plan.name)}
                   >
                     {plan.popular ? 'Get Started Now' : 'Choose Plan'}
                     <Icon icon="mdi:arrow-right" className="h-4 w-4 md:h-5 md:w-5 ml-2" />
@@ -169,7 +179,7 @@ export function PricingSection() {
           transition={{ delay: 0.6 }}
         >
           <p className="text-sm md:text-base text-muted-foreground mb-4">
-            Need a custom plan? <a href="#contact" className="text-primary hover:underline font-semibold">Contact us</a> for personalized options
+            Need a custom plan? <Link href="/contact" className="text-primary hover:underline font-semibold">Contact us</Link> for personalized options
           </p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-6 md:mt-8">
             {[
@@ -185,6 +195,13 @@ export function PricingSection() {
           </div>
         </motion.div>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        serviceTitle={`${selectedPlan} Membership Plan`}
+      />
     </section>
   );
 }
